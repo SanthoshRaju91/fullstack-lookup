@@ -49,7 +49,7 @@ Always a fan of separation of concerns, as you guessed this file is where you wr
 
 Express is so generous, that is allows us to integrate number of available middlewares in the present ecosystem. Integrating a middleware is as simple `app.use();`
 
-Reason it is moved to its own fle is again separation of concerns and having a `./index.js` (which is the maing entry point of the application and more on this below) is make it as small as possible, so a junior develper looking at it will not be intimidated by the sheer lines of the content.
+Reason it is moved to its own file is again separation of concerns and having a `./index.js` (which is the maing entry point of the application and more on this below) is make it as small as possible, so a junior develper looking at it will not be intimidated by the sheer lines of the content.
 
 Also this is where you will also configure you application cross-domain policy rules, which is basically a handshake protocol between a server and client, to validate whether the client is genious and not a hacker is disguise :).
 
@@ -75,5 +75,19 @@ Place where you add all your application utility functions, one such util that I
 
 Logging any application is where important, because to figure out a any errors in the project reported by users would usually resolve to a log file.
 
-Please check the `utils/logger.js` file for implementation.
+Please check the `server/utils/logger.js` file for implementation.
+
+### modules
+
+This is where you have write most of your code, because this where you develop your project modules. I prefer using a pod based approach, meaning I would structure my project requirement based on modules.
+
+So you know exactly to look for, when you land in an issue.
+
+One such module that I have created is workshop (Dance workshop). Inside this you will have
+
+1. `mode.js` - Where your define your DB schema, mine is MongoDB.
+2. `controller.js` - Where your write your business logic, saving data to DB and sending response back to the client.
+3. `routes.js` - The operator, where it routes the requests to specified controller method to handle it's request.
+
+And a main `index.js`, where is exports all the module's routes.
 
