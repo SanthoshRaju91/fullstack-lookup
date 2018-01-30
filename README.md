@@ -95,5 +95,33 @@ And a main `index.js`, where is exports all the module's routes.
 
 Bootstrapping your application, I used this to create a logs folder, if does not exists. Similarly you can add your own application bootstraps here.
 
-Please have this in mind, that this file should work based on `if and else`
+Please have this in mind, that this file should work based on `if and else` only.
+
+### ./index.js
+
+I can't stress more, but perhaps the most important file in your fullstack application. It is the file where the application's entry point.
+
+Here we
+
+1. Create an application instance.
+2. Establishing DB connection.
+3. Configuring all the middlewares.
+4. Consolidating and configuring all the API's
+5. Serve static files.
+6. Global error handler.
+7. Starting the app server and specified PORT, so it waits for handling requests.
+
+Quite a big list right, now you know why it is The file in the application.
+
+Please allow me to offer some pro-tips as I learnt via out the years.
+
+<b>Server static files</b> - In a fullstack application, you can serve the backend and client on two different ports, but by doing so, we might land in a issue which haunts everyone. 
+
+That is, Content Security policy. Please don't be intimidated, its simple as it doesn't sound to be. Ways you can fix it is by providing CSP rules which I discussed above in the `config/middleware.js` section.
+
+Or taking the client dist / build folder and serving it from backend itself. Which shares the resource both on the same origin.
+
+That is the advantage of using Express. You not only build API's but also serve static files.
+
+
 
