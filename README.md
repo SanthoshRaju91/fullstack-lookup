@@ -23,7 +23,7 @@ Hence spend your first inital time in setting the project and making it producti
 
 First lets look at the server scaffolding / project structure.
 
-#### config/index.js
+### config/index.js
 
 Perhaps the second most important file, on the applicaton. This file basically configures your entire application based on the environment right from 
 
@@ -31,9 +31,9 @@ Perhaps the second most important file, on the applicaton. This file basically c
 - configuring server PORT
 - Reuse application configs
 
-Always keep in mind that this is an environment based file. Remember the switch, this is exactly acts on it. and the switch in our case is the `ENV` variable available in `process.env.ENV` which you would set on your server.
+Always keep in mind that this is an environment based file. Remember the switch, this is exactly acts on it and the switch in our case is the `ENV` variable available in `process.env.ENV` which you would set on your server.
 
-How is it really usefull - let me explain say we need to connect to a different database depending on where the application is served.
+How is it really usefull - let me explain say we need to connect to a different database depending on where the application is served, below is how we achieve it.
 
 ```javascript
 const ENV = process.env.ENV || 'development';
