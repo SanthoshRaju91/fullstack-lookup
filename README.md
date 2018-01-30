@@ -69,25 +69,25 @@ or a better way of doing it is using `cors` node module
 app.use(cors());
 ```
 
-There is plenty of options available to configure the CORS using this module 
+There is plenty of options available to configure the CORS using this module. Please find it [here](https://www.npmjs.com/package/cors)
 
 ### utils
 
-Place where you add all your application utility functions, one such util that I usually create on the inital project setup is the logger.
+Place where you add all your application utility functions, one such utility that I usually create on the inital project setup is the logger.
 
-Logging any application is where important, because to figure out a any errors in the project reported by users would usually resolve to a log file.
+Logging any application is where important, because to figure out any errors in the project reported by users would usually resolve to a log file.
 
-Please check the `server/utils/logger.js` file for implementation.
+Please check the `server/utils/logger.js` file for implementation. And whereever you need to log, use one of the appropriate methods to do so.
 
 ### modules
 
-This is where you have write most of your code, because this where you develop your project modules. I prefer using a pod based approach, meaning I would structure my project requirement based on modules.
+This is where you have write most of your code, because this is where you develop your project modules. I prefer using a pod based approach, meaning I would structure my project requirement based on modules.
 
-So you know exactly to look for, when you land in an issue.
+So you know exactly where to look for, when you land in an issue.
 
 One such module that I have created is workshop (Dance workshop). Inside this you will have
 
-1. `mode.js` - Where your define your DB schema, mine is MongoDB.
+1. `model.js` - Where your define your DB schema, mine is MongoDB.
 2. `controller.js` - Where your write your business logic, saving data to DB and sending response back to the client.
 3. `routes.js` - The operator, where it routes the requests to specified controller method to handle it's request.
 
@@ -101,7 +101,7 @@ Please have this in mind, that this file should work based on `if and else` only
 
 ### ./index.js
 
-I can't stress more, but perhaps the most important file in your fullstack application. It is the file where the application's entry point.
+I can't stress more, but perhaps the most important file in your fullstack application. It is The file where the application's starts executing.
 
 Here we
 
@@ -119,17 +119,17 @@ Quite a big list right, now you know why it is The file in the application.
 
 <b>Server static files</b> - In a fullstack application, you can serve the backend and client on two different ports, but by doing so, we might land in a issue which haunts everyone. 
 
-That is, Content Security policy. Please don't be intimidated, its simple as it doesn't sound to be. Ways you can fix it is by providing CSP rules which I discussed above in the `config/middleware.js` section.
+That is, Content Security policy. Please don't be intimidated, it is simple as it doesn't sound to be. Ways you can fix it is by providing CSP rules which I discussed above in the `config/middleware.js` section.
 
-Or taking the client dist / build folder and serving it from backend itself. Which shares the resource both on the same origin.
+Or taking the client dist / build folder and serving it from backend itself. Which shares both the resources on the same origin.
 
 That is the advantage of using Express. You not only build API's but also serve static files.
 
-<b>Global error handler</b> - If you have an error, at any part of the application, one way to not crash the application is to add error handlers.
+<b>Global error handler</b> - If you have an error at any part of the application, one way to not crash the application is to add error handlers.
 
 But with a codebase which can span to a large extent, having a error handler all over the place only increases your worry in finding where is the issue.
 
-One way to resolve this issue is using a global error handler in the `index.js`
+One way to resolve this issue is to use a global error handler in the `index.js`
 
 ```javascript
 
@@ -171,7 +171,7 @@ const ENV = process.env.ENV || 'development';
 
 <b> async / await </b> - Javscript which it is asynchronous in nature, you would come around various API which are promised.
 
-So resolve them you would normally use `.then()`. But what if your need perform another async operation on the fetch results like
+So to resolve them you would normally use `.then()`. But what if you need to perform another async operation on the fetched results like
 
 ```javascript
 
@@ -198,7 +198,7 @@ async function getUserbooks() {
 }
 ```
 
-More neat right. I couldn't feel more happier than this, asyn await landing with ES6 (Make no mistake, it is still async code with Promise, but a more cleaner API to write async code)
+More neat right. I couldn't feel more happier than this, async await landing with ES6 (Make no mistake, it is still async code with Promise, but a more cleaner API to write async code)
 
 Now, with these quick tips and brief about the backend scaffolding, I would not like to continue with the client side, because we have many options to do so.
 
