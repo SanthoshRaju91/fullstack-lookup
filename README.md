@@ -202,13 +202,13 @@ More neat right. I couldn't feel more happier than this, asyn await landing with
 
 Now, with these quick tips and brief about the backend scaffolding, I would not like to continue with the client side, because we have many options to do so.
 
-Usually I use react.js for my client side - you can use the (create react app)[https://github.com/facebook/create-react-app] by this awesome person Dan Abramov. Or if you feel you want more freedom you can do so by creating your own scaffolding.
+Usually I use react.js for my client side - you can use the [create react app](https://github.com/facebook/create-react-app) by this awesome person Dan Abramov. Or if you feel you want more freedom you can do so by creating your own scaffolding.
 
-Angular 2 - Please use Angular CLI (ng cli)[https://cli.angular.io/]
+Angular 2 - Please use Angular CLI [ng cli](https://cli.angular.io/)
 
-Ember - It's world's best cli among the frameworks (ember-cli)[https://ember-cli.com/]
+Ember - It's world's best cli among the frameworks [ember-cli](https://ember-cli.com/)
 
-Vue - New kid on the block (Vue-cli)[https://github.com/vuejs/vue-cli]
+Vue - New kid on the block [Vue-cli](https://github.com/vuejs/vue-cli)
 
 Its your option to choose from.
 
