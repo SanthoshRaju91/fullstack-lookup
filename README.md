@@ -1,6 +1,6 @@
 # Fullstack application
 
-Being a fullstack developer or creating fullstack application means knowing everything (which is why the call it fullstack)
+Being a fullstack developer or creating fullstack application means knowing everything (which is why they call it fullstack)
 
 But starting with a fullstack application can be bit clumsy stuff, as it happened to me when I started exploring fullstack application. It's really not because the framework is so diffcult to master or become an expert. But rather the flexibility or easiness with which you can create a fullstack application.
 
