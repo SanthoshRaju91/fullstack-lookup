@@ -91,3 +91,9 @@ One such module that I have created is workshop (Dance workshop). Inside this yo
 
 And a main `index.js`, where is exports all the module's routes.
 
+### ./bootstrap.js
+
+Bootstrapping your application, I used this to create a logs folder, if does not exists. Similarly you can add your own application bootstraps here.
+
+Please have this in mind, that this file should work based on `if and else`
+

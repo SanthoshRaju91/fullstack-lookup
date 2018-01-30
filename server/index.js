@@ -25,6 +25,17 @@ app.get('/', (req, res) => {
     }
 });
 
+// Global error handler.
+app.use((err, req, res, next) => {
+    if(err) {
+        logger.error(`Error: ${err}`);
+        res.status(500).json({
+            success: false,
+            message: 'Something went wrong'
+        });
+    }
+})
+
 app.listen(PORT, err => {
     if(err) {
         logger.error(`Error listening on PORT: ${PORT} - ${err}`);
