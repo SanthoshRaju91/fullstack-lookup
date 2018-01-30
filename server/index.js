@@ -34,6 +34,8 @@ app.use((err, req, res, next) => {
             message: 'Something went wrong'
         });
     }
+
+    next();
 })
 
 app.listen(PORT, err => {

@@ -51,7 +51,7 @@ Express is so generous, that is allows us to integrate number of available middl
 
 Reason it is moved to its own file is again separation of concerns and having a `./index.js` (which is the maing entry point of the application and more on this below) is make it as small as possible, so a junior develper looking at it will not be intimidated by the sheer lines of the content.
 
-Also this is where you will also configure you application cross-domain policy rules, which is basically a handshake protocol between a server and client, to validate whether the client is genious and not a hacker is disguise :).
+Also this is where you will also configure you application cross-domain policy rules, which is basically a handshake protocol between a server and client, to validate whether the client is genious and not a hacker is disguise :smile:.
 
 Again how do you do it - 
 
@@ -113,7 +113,7 @@ Here we
 
 Quite a big list right, now you know why it is The file in the application.
 
-Please allow me to offer some pro-tips as I learnt via out the years.
+### Please allow me to offer some pro-tips as I learnt via out the years.
 
 <b>Server static files</b> - In a fullstack application, you can serve the backend and client on two different ports, but by doing so, we might land in a issue which haunts everyone. 
 
@@ -123,5 +123,97 @@ Or taking the client dist / build folder and serving it from backend itself. Whi
 
 That is the advantage of using Express. You not only build API's but also serve static files.
 
+<b>Global error handler</b> - If you have an error, at any part of the application, one way to not crash the application is to add error handlers.
 
+But with a codebase which can span to a large extent, having a error handler all over the place only increases your worry in finding where is the issue.
 
+One way to resolve this issue is using a global error handler in the `index.js`
+
+```javascript
+
+app.use((err, req, res, next) => {
+    if(err) {
+        logger.error(`Error: ${err}`);
+        res.status(500).json({
+            success: false,
+            message: 'Something went wrong'
+        });
+    }
+    next();
+})
+```
+
+Now when you write your code, wrapping it in a `try catch` block and throw the err in your catch block is all you need to do. 
+
+The above handler catches the error and resolve them accordingly as the logic you have given.
+
+How does it do it - well the above code you see is another form of express middleware where in this case it a global middleware.
+
+You can also write inline / isolated / constrained middlewares as
+
+```javascript
+app.all('/api/', auth(), [routes]);
+```
+
+Take that as an example for authenticating your routes.
+
+Please don't forget to use next() in your middleware's or else your client will be waiting all day for the results.
+
+<b>Note:</b> Please check the order where the above method is placed, because if this is placed before your routes configuration this will not work.
+
+<b>Use defaults </b> - Not only in here, but any programming language. Try to assign your variable with default values, so there is less chance of crashing your application.
+
+```javascript
+const ENV = process.env.ENV || 'development';
+```
+
+<b> async / await </b> - Javscript which it is asynchronous in nature, you would come around various API which are promised.
+
+So resolve them you would normally use `.then()`. But what if your need perform another async operation on the fetch results like
+
+```javascript
+
+fetchUser()
+    .then(repsonse => {
+        fetchBooks(response.userID)
+            .then(booksResponse => {
+
+            })
+    })
+```
+
+This is called promise pyramid in contrast to callback hell. Of course you can use promise chain to chain them, but I have a more simpler one, which improves the code readability as well. So refactoring the above code with `async / await`
+
+```javascript
+async function getUserbooks() {
+    try {
+        let user = await fetchUser();
+        let books = await fetchBooks(user.userID);
+        console.log(books);
+    } catch (err) {
+        throw err;
+    }
+}
+```
+
+More neat right. I couldn't feel more happier than this, asyn await landing with ES6 (Make no mistake, it is still async code with Promise, but a more cleaner API to write async code)
+
+Now, with these quick tips and brief about the backend scaffolding, I would not like to continue with the client side, because we have many options to do so.
+
+Usually I use react.js for my client side - you can use the (create react app)[https://github.com/facebook/create-react-app] by this awesome person Dan Abramov. Or if you feel you want more freedom you can do so by creating your own scaffolding.
+
+Angular 2 - Please use Angular CLI (ng cli)[https://cli.angular.io/]
+
+Ember - It's world's best cli among the frameworks (ember-cli)[https://ember-cli.com/]
+
+Vue - New kid on the block (Vue-cli)[https://github.com/vuejs/vue-cli]
+
+Its your option to choose from.
+
+### Thank you
+
+If you find this really helpful, please leave a :star:. So that I can appear at the next react.js meetup as a speaker :wink:.
+
+If you find any errors or suggestion that would help this documentation or making the code much better, please feel free to raise a PR. I would be delighted to merge it.
+
+And a PR can't get any easier than this, so open source contribution is now offically open.
