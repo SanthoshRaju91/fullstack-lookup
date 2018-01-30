@@ -41,6 +41,39 @@ const ENV = process.env.ENV || 'development';
 const DB_URL = (ENV === 'production') ? '<PROD_DB>' : '<DEV_DB>';
 ```
 
+### config/db.js
 
+Always a fan of separation of concerns, as you guessed this file is where you write you connection code and also export a function to close the connection.
 
+### config/middleware.js
+
+Express is so generous, that is allows us to integrate number of available middlewares in the present ecosystem. Integrating a middleware is as simple `app.use();`
+
+Reason it is moved to its own fle is again separation of concerns and having a `./index.js` (which is the maing entry point of the application and more on this below) is make it as small as possible, so a junior develper looking at it will not be intimidated by the sheer lines of the content.
+
+Also this is where you will also configure you application cross-domain policy rules, which is basically a handshake protocol between a server and client, to validate whether the client is genious and not a hacker is disguise :).
+
+Again how do you do it - 
+
+```javascript
+
+app.all('/', (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    next();
+})
+``` 
+or a better way of doing it is using `cors` node module
+
+```javascript
+app.use(cors());
+```
+
+### utils
+
+Place where you add all your application utility functions, one such util that I usually create on the inital project setup is the logger.
+
+Logging any application is where important, because to figure out a any errors in the project reported by users would usually resolve to a log file.
+
+Please check the `utils/logger.js` file for implementation.
 
